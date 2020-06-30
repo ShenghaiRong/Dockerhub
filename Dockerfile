@@ -13,7 +13,7 @@ ENV LD_LIBRARY_PATH /usr/lib/x86_64-linux-gnu:/usr/local/cuda-10.1/lib64:$LD_LIB
 
 RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list && \
     APT_INSTALL="apt-get install -y --no-install-recommends" && \
-    PIP_INSTALL_QH="python -m pip --no-cache-dir install --upgrade -i https://pypi.tuna.tsinghua.edu.cn/simple" && \
+    #PIP_INSTALL_QH="python -m pip --no-cache-dir install --upgrade -i https://pypi.tuna.tsinghua.edu.cn/simple" && \
     PIP_INSTALL="python -m pip --no-cache-dir install --upgrade" && \
     GIT_CLONE="git clone --depth 10" && \
     CONDA_INSTALL="conda install -y" && \
@@ -59,7 +59,7 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
     pip install --upgrade pip && \
     $PIP_INSTALL \
         torch==1.5.1+cu101 torchvision==0.6.1+cu101 -f https://download.pytorch.org/whl/torch_stable.html && \
-    $PIP_INSTALL_QH \
+    $PIP_INSTALL \
         numpy \
         pillow \
         opencv_python \
