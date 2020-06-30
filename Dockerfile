@@ -3,14 +3,13 @@
 # ------------------------------------------------------------------
 # python        3.7    (conda)
 # pytorch       1.5.1    (conda)
-# cuda          10.2    (conda)
 # plyfile       0.7.1  (pip)
 # sacred        0.8.1  (pip)
 # ==================================================================
-FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu16.04
+FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu16.04
 
 ENV PATH /opt/conda/bin:$PATH
-ENV LD_LIBRARY_PATH /usr/lib/x86_64-linux-gnu:/usr/local/cuda-10.2/lib64:$LD_LIBRARY_PATH
+ENV LD_LIBRARY_PATH /usr/lib/x86_64-linux-gnu:/usr/local/cuda-10.1/lib64:$LD_LIBRARY_PATH
 
 RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list && \
     APT_INSTALL="apt-get install -y --no-install-recommends" && \
@@ -63,7 +62,7 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
     $CONDA_INSTALL \
         pytorch=1.5.1 \
         torchvision \
-        cudatoolkit=10.2 \
+        cudatoolkit=10.1 \
         cudnn \
         && \
     pip install --upgrade pip && \
