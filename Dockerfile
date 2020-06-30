@@ -53,17 +53,13 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
 # ==================================================================
 # conda
 # ------------------------------------------------------------------
-    conda config --set show_channel_urls yes && \
-    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ && \
-    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ && \
-    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/ && \
     $CONDA_INSTALL \
         python=3.7 && \
     $CONDA_INSTALL \
-        pytorch=1.5.1 \
+        pytorch \
         torchvision \
         cudatoolkit=10.1 \
-        cudnn \
+        -c pytorch \
         && \
     pip install --upgrade pip && \
     $PIP_INSTALL \
